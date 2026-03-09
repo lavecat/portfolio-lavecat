@@ -3,58 +3,8 @@
 import { PauseIcon, PlayIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useCallback, useEffect, useState } from "react";
-
-interface Track {
-	name: string;
-	artists: { name: string }[];
-	album: {
-		name: string;
-		images: { url: string }[];
-	};
-	duration_ms?: number | null;
-	external_urls: {
-		spotify: string;
-	};
-}
-
-interface RecentTrack {
-	track: Track;
-	played_at: string;
-}
-
-interface CurrentlyPlaying {
-	item: Track;
-	is_playing: boolean;
-	progress_ms: number;
-}
-
-function formatDuration(ms: number) {
-	const minutes = Math.floor(ms / 60000);
-	const seconds = Math.floor((ms % 60000) / 1000);
-	return `${minutes}:${seconds.toString().padStart(2, "0")}`;
-}
-
-function formatProgress(progress: number, duration: number) {
-	if (!duration || duration <= 0) {
-		return "0%";
-	}
-
-	const progressPercent = (progress / duration) * 100;
-	return `${progressPercent}%`;
-}
-
-function formatPlayedAt(played_at: string) {
-	const playedDate = new Date(played_at);
-	const now = new Date();
-	const diffInMinutes = Math.floor(
-		(now.getTime() - playedDate.getTime()) / (1000 * 60),
-	);
-
-	if (diffInMinutes < 1) return "Just now";
-	if (diffInMinutes < 60) return `${diffInMinutes}m ago`;
-	if (diffInMinutes < 1440) return `${Math.floor(diffInMinutes / 60)}h ago`;
-	return `${Math.floor(diffInMinutes / 1440)}d ago`;
-}
+import { formatDuration, formatPlayedAt, formatProgress } from "@/lib/music";
+import type { CurrentlyPlaying, RecentTrack, Track } from "@/types/music";
 
 function TrackCard({
 	track,
@@ -204,7 +154,7 @@ function TrackCard({
 	);
 }
 
-export default function SpotifyStatus() {
+export default function MusicStatus() {
 	const [currentlyPlaying, setCurrentlyPlaying] =
 		useState<CurrentlyPlaying | null>(null);
 	const [recentTracks, setRecentTracks] = useState<RecentTrack[]>([]);
@@ -213,7 +163,7 @@ export default function SpotifyStatus() {
 		boolean | null
 	>(null);
 
-	const fetchSpotifyData = async (showLoading = true) => {
+	const fetchMusicData = async (showLoading = true) => {
 		try {
 			if (showLoading) {
 				setLoading(true);
@@ -227,14 +177,14 @@ export default function SpotifyStatus() {
 				setRecentTracks(data?.recentTracks || []);
 			}
 		} catch (error) {
-			console.error("Failed to fetch Spotify data:", error);
+			console.error("Failed to fetch music data:", error);
 		} finally {
 			setLoading(false);
 		}
 	};
 
-	// Using useCallback to memoize the fetchSpotifyData function
-	const memoizedFetchData = useCallback(fetchSpotifyData, []);
+	// Using useCallback to memoize the fetchMusicData function
+	const memoizedFetchData = useCallback(fetchMusicData, []);
 
 	// Separate useEffect to handle play state changes
 	useEffect(() => {

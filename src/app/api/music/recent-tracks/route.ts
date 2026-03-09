@@ -1,77 +1,15 @@
 import { NextResponse } from "next/server";
-
-const LASTFM_RECENT_TRACKS_URL =
-	"https://portfolio-api-hehe.vercel.app/api/lastfm/recent-tracks";
-
-interface LastFmTrack {
-	name: string;
-	url: string;
-	artist?: {
-		"#text"?: string;
-	};
-	album?: {
-		"#text"?: string;
-	};
-	image?: Array<{
-		size: string;
-		"#text"?: string;
-	}>;
-	date?: {
-		uts?: string;
-		"#text"?: string;
-	};
-	"@attr"?: {
-		nowplaying?: string;
-	};
-}
-
-function getBestImage(track: LastFmTrack) {
-	if (!Array.isArray(track.image)) {
-		return "";
-	}
-
-	const preferredSizes = ["extralarge", "large", "medium", "small"];
-	for (const size of preferredSizes) {
-		const found = track.image.find((img) => img.size === size && img["#text"]);
-		if (found?.["#text"]) {
-			return found["#text"];
-		}
-	}
-
-	return track.image.find((img) => Boolean(img["#text"]))?.["#text"] || "";
-}
-
-function mapTrack(track: LastFmTrack) {
-	return {
-		name: track.name,
-		artists: [{ name: track.artist?.["#text"] || "Unknown Artist" }],
-		album: {
-			name: track.album?.["#text"] || "Unknown Album",
-			images: [{ url: getBestImage(track) }],
-		},
-		duration_ms: null,
-		external_urls: {
-			spotify: track.url,
-		},
-	};
-}
-
-function toIsoDate(uts?: string) {
-	if (!uts) {
-		return new Date().toISOString();
-	}
-
-	const timestamp = Number(uts);
-	if (Number.isNaN(timestamp)) {
-		return new Date().toISOString();
-	}
-
-	return new Date(timestamp * 1000).toISOString();
-}
+import { mapLastFmTrack, toIsoDate } from "@/lib/music";
+import type { LastFmTrack } from "@/types/music";
 
 export async function GET() {
 	try {
-		const response = await fetch(LASTFM_RECENT_TRACKS_URL, {
+		const apiUrl = process.env.NEXT_PUBLIC_API_URL;
+		if (!apiUrl) {
+			throw new Error("API URL not configured");
+		}
+
+		const response = await fetch(`${apiUrl}/lastfm/recent-tracks`, {
 			headers: {
 				"Content-Type": "application/json",
 			},
@@ -91,7 +29,7 @@ export async function GET() {
 
 		const currentlyPlaying = nowPlayingTrack
 			? {
-					item: mapTrack(nowPlayingTrack),
+					item: mapLastFmTrack(nowPlayingTrack),
 					is_playing: true,
 					progress_ms: 0,
 				}
@@ -100,7 +38,7 @@ export async function GET() {
 		const recentTracks = tracks
 			.filter((track) => track?.["@attr"]?.nowplaying !== "true")
 			.map((track) => ({
-				track: mapTrack(track),
+				track: mapLastFmTrack(track),
 				played_at: toIsoDate(track.date?.uts),
 			}));
 

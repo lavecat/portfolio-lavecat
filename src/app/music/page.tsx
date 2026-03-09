@@ -1,4 +1,4 @@
-import SpotifyStatus from "@/components/SpotifyStatus";
+import MusicStatus from "@/components/MusicStatus";
 
 export default function MusicPage() {
 	return (
@@ -6,7 +6,7 @@ export default function MusicPage() {
 			<h1 className="text-3xl md:text-4xl font-bold mb-6 tracking-wide text-white">
 				Music Activity
 			</h1>
-			<SpotifyStatus />
+			<MusicStatus />
 		</div>
 	);
 }
