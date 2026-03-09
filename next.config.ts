@@ -11,7 +11,19 @@ const config: NextConfig = {
 			},
 			{
 				protocol: "https",
+				hostname: "lastfm.freetls.fastly.net",
+				port: "",
+				pathname: "/**",
+			},
+			{
+				protocol: "https",
 				hostname: "cdn.discordapp.com",
+				port: "",
+				pathname: "/**",
+			},
+			{
+				protocol: "https",
+				hostname: "myanimelist.net",
 				port: "",
 				pathname: "/**",
 			},

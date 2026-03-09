@@ -1,8 +1,8 @@
 import type { Metadata, Viewport } from "next";
 
 export const metadata: Metadata = {
-	title: "Spotify Activity",
-	description: "See my current Spotify listening activity",
+	title: "Music Activity",
+	description: "See my current music listening activity",
 };
 
 export const viewport: Viewport = {
@@ -10,7 +10,7 @@ export const viewport: Viewport = {
 	initialScale: 1,
 };
 
-export default function SpotifyLayout({
+export default function MusicLayout({
 	children,
 }: {
 	children: React.ReactNode;

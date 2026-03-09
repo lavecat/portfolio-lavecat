@@ -11,7 +11,7 @@ interface Track {
 		name: string;
 		images: { url: string }[];
 	};
-	duration_ms: number;
+	duration_ms?: number | null;
 	external_urls: {
 		spotify: string;
 	};
@@ -35,6 +35,10 @@ function formatDuration(ms: number) {
 }
 
 function formatProgress(progress: number, duration: number) {
+	if (!duration || duration <= 0) {
+		return "0%";
+	}
+
 	const progressPercent = (progress / duration) * 100;
 	return `${progressPercent}%`;
 }
@@ -89,10 +93,11 @@ function TrackCard({
 
 	useEffect(() => {
 		let interval: NodeJS.Timeout;
-		if (isPlaying) {
+		if (isPlaying && track.duration_ms && track.duration_ms > 0) {
+			const trackDuration = track.duration_ms;
 			interval = setInterval(() => {
 				setCurrentProgress((prev) => {
-					if (prev >= track.duration_ms) {
+					if (prev >= trackDuration) {
 						if (onTrackComplete) {
 							onTrackComplete();
 						}
@@ -104,6 +109,8 @@ function TrackCard({
 		}
 		return () => clearInterval(interval);
 	}, [isPlaying, track.duration_ms, onTrackComplete]);
+
+	const hasDuration = Boolean(track.duration_ms && track.duration_ms > 0);
 
 	return (
 		<div className="bg-zinc-900/50 backdrop-blur-sm rounded-lg p-4 w-full hover:bg-zinc-900/70 transition-colors relative">
@@ -121,7 +128,43 @@ function TrackCard({
 						className="object-cover rounded-md"
 					/>
 				</div>
-				<div className="flex-1 min-w-0 py-1 pr-8">
+				<div className="flex-1 min-w-0 py-1 pr-16 relative">
+					{(isPlaying || isPaused) && (
+						<>
+							{!hasDuration && (
+								<div className="absolute top-0 right-0 flex items-end gap-1 h-5">
+									<span
+										className={`w-1 rounded-sm bg-[#ffb6c1] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
+										style={{ height: "40%", animationDelay: "0ms" }}
+									/>
+									<span
+										className={`w-1 rounded-sm bg-[#ffb6c1] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
+										style={{ height: "100%", animationDelay: "120ms" }}
+									/>
+									<span
+										className={`w-1 rounded-sm bg-[#ffb6c1] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
+										style={{ height: "65%", animationDelay: "240ms" }}
+									/>
+									<span
+										className={`w-1 rounded-sm bg-[#ffb6c1] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
+										style={{ height: "85%", animationDelay: "360ms" }}
+									/>
+								</div>
+							)}
+							<div className="absolute bottom-0 right-0 flex items-center gap-1">
+								{isPlaying ? (
+									<PlayIcon className="w-3 h-3" />
+								) : (
+									<PauseIcon className="w-3 h-3" />
+								)}
+								<span
+									className={`text-xs uppercase font-medium ${isPlaying ? "text-green-500" : "text-orange-500"}`}
+								>
+									{isPlaying ? "playing" : "paused"}
+								</span>
+							</div>
+						</>
+					)}
 					<a
 						href={track.external_urls.spotify}
 						target="_blank"
@@ -136,31 +179,22 @@ function TrackCard({
 					<p className="text-gray-500 text-xs truncate mt-0.5">
 						{track.album.name}
 					</p>
-					{(isPlaying || isPaused) && (
+					{(isPlaying || isPaused) && hasDuration && (
 						<div className="mt-2">
-							<div className="flex justify-end items-center gap-1 mb-1">
-								{isPlaying ? (
-									<PlayIcon className="w-3 h-3" />
-								) : (
-									<PauseIcon className="w-3 h-3" />
-								)}
-								<span
-									className={`text-xs uppercase font-medium ${isPlaying ? "text-green-500" : "text-orange-500"}`}
-								>
-									{isPlaying ? "playing" : "paused"}
-								</span>
-							</div>
 							<div className="h-1 bg-zinc-800 rounded-full overflow-hidden">
 								<div
 									className="h-full bg-[#ffb6c1] transition-all duration-1000 ease-linear"
 									style={{
-										width: formatProgress(currentProgress, track.duration_ms),
+										width: formatProgress(
+											currentProgress,
+											track.duration_ms || 0,
+										),
 									}}
 								/>
 							</div>
 							<div className="flex justify-between text-xs text-gray-500 mt-1">
 								<span>{formatDuration(currentProgress)}</span>
-								<span>{formatDuration(track.duration_ms)}</span>
+								<span>{formatDuration(track.duration_ms || 0)}</span>
 							</div>
 						</div>
 					)}
@@ -185,19 +219,12 @@ export default function SpotifyStatus() {
 				setLoading(true);
 			}
 
-			const [currentRes, recentRes] = await Promise.all([
-				fetch("/api/spotify/now-playing"),
-				fetch("/api/spotify/recently-played"),
-			]);
+			const response = await fetch("/api/music/recent-tracks");
 
-			if (currentRes.ok) {
-				const currentData = await currentRes.json();
-				setCurrentlyPlaying(currentData);
-			}
-
-			if (recentRes.ok) {
-				const recentData = await recentRes.json();
-				setRecentTracks(recentData?.items || []);
+			if (response.ok) {
+				const data = await response.json();
+				setCurrentlyPlaying(data?.currentlyPlaying || null);
+				setRecentTracks(data?.recentTracks || []);
 			}
 		} catch (error) {
 			console.error("Failed to fetch Spotify data:", error);

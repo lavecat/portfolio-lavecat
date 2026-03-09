@@ -23,7 +23,7 @@ const socialLinks = [
 	{
 		name: "Bluesky",
 		icon: <SiBluesky size={24} />,
-		url: "https://bsky.app/profile/mjba.my",
+		url: "https://bsky.app/profile/mja.moe",
 		color:
 			"bg-[#1DA1F2]/10 hover:bg-[#1DA1F2]/20 text-[#1DA1F2] border-[#1DA1F2]/30",
 	},

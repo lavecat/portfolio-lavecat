@@ -12,7 +12,7 @@ import {
 	FaFile,
 	FaGithub,
 	FaHome,
-	FaSpotify,
+	FaMusic,
 	FaSteam,
 	FaTv,
 } from "react-icons/fa";
@@ -32,7 +32,7 @@ export default function Navbar() {
 	const navItems = [
 		{ href: "/", icon: <FaHome size={20} />, title: "Home" },
 		{ href: "/project", icon: <FaCode size={20} />, title: "Projects" },
-		{ href: "/spotify", icon: <FaSpotify size={20} />, title: "Spotify" },
+		{ href: "/music", icon: <FaMusic size={20} />, title: "Music" },
 		{ href: "/anime", icon: <FaTv size={20} />, title: "Anime" },
 		{ href: "/steam", icon: <FaSteam size={20} />, title: "Steam" },
 		{ href: "/stats", icon: <FaChartBar size={20} />, title: "Stats" },
