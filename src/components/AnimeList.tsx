@@ -28,23 +28,23 @@ type SortOption = "score" | "title" | "status";
 const STATUS_MAP = {
 	watching: {
 		label: "📺 Watching",
-		class: "bg-[#ffb6c1]/20 text-[#ffb6c1] border border-[#ffb6c1]/30",
+		class: "bg-[#6a584c]/20 text-[#6a584c] border border-[#6a584c]/30",
 	},
 	completed: {
 		label: "✨ Completed",
-		class: "bg-[#ffb6c1]/20 text-[#ffb6c1] border border-[#ffb6c1]/30",
+		class: "bg-[#6a584c]/20 text-[#6a584c] border border-[#6a584c]/30",
 	},
 	plan_to_watch: {
 		label: "📝 Plan to Watch",
-		class: "bg-[#ffb6c1]/20 text-[#ffb6c1] border border-[#ffb6c1]/30",
+		class: "bg-[#6a584c]/20 text-[#6a584c] border border-[#6a584c]/30",
 	},
 	dropped: {
 		label: "🚫 Dropped",
-		class: "bg-[#ffb6c1]/20 text-[#ffb6c1] border border-[#ffb6c1]/30",
+		class: "bg-[#6a584c]/20 text-[#6a584c] border border-[#6a584c]/30",
 	},
 	on_hold: {
 		label: "⏸️ On Hold",
-		class: "bg-[#ffb6c1]/20 text-[#ffb6c1] border border-[#ffb6c1]/30",
+		class: "bg-[#6a584c]/20 text-[#6a584c] border border-[#6a584c]/30",
 	},
 } as const;
 
@@ -193,9 +193,9 @@ export default function AnimeList({ animeList }: AnimeListProps) {
 	return (
 		<div className="relative">
 			<div className="mb-8">
-				<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 p-4 sm:p-6 bg-zinc-900/50 rounded-lg border border-[#ffb6c1]/20 flex-1 w-full">
+				<div className="grid grid-cols-2 md:grid-cols-3 xl:grid-cols-6 gap-4 p-4 sm:p-6 bg-zinc-900/50 rounded-lg border border-[#6a584c]/20 flex-1 w-full">
 					<div className="stat text-center">
-						<h3 className="text-xs sm:text-sm font-medium text-[#ffb6c1]">
+						<h3 className="text-xs sm:text-sm font-medium text-[#6a584c]">
 							Total Anime
 						</h3>
 						<p className="text-xl sm:text-2xl font-bold text-white">
@@ -203,7 +203,7 @@ export default function AnimeList({ animeList }: AnimeListProps) {
 						</p>
 					</div>
 					<div className="stat text-center">
-						<h3 className="text-xs sm:text-sm font-medium text-[#ffb6c1]">
+						<h3 className="text-xs sm:text-sm font-medium text-[#6a584c]">
 							Completed
 						</h3>
 						<p className="text-xl sm:text-2xl font-bold text-white">
@@ -211,7 +211,7 @@ export default function AnimeList({ animeList }: AnimeListProps) {
 						</p>
 					</div>
 					<div className="stat text-center">
-						<h3 className="text-xs sm:text-sm font-medium text-[#ffb6c1]">
+						<h3 className="text-xs sm:text-sm font-medium text-[#6a584c]">
 							Watching
 						</h3>
 						<p className="text-xl sm:text-2xl font-bold text-white">
@@ -219,7 +219,7 @@ export default function AnimeList({ animeList }: AnimeListProps) {
 						</p>
 					</div>
 					<div className="stat text-center">
-						<h3 className="text-xs sm:text-sm font-medium text-[#ffb6c1]">
+						<h3 className="text-xs sm:text-sm font-medium text-[#6a584c]">
 							Plan to Watch
 						</h3>
 						<p className="text-xl sm:text-2xl font-bold text-white">
@@ -227,7 +227,7 @@ export default function AnimeList({ animeList }: AnimeListProps) {
 						</p>
 					</div>
 					<div className="stat text-center">
-						<h3 className="text-xs sm:text-sm font-medium text-[#ffb6c1]">
+						<h3 className="text-xs sm:text-sm font-medium text-[#6a584c]">
 							Total Episodes
 						</h3>
 						<p className="text-xl sm:text-2xl font-bold text-white">
@@ -235,7 +235,7 @@ export default function AnimeList({ animeList }: AnimeListProps) {
 						</p>
 					</div>
 					<div className="stat text-center">
-						<h3 className="text-xs sm:text-sm font-medium text-[#ffb6c1]">
+						<h3 className="text-xs sm:text-sm font-medium text-[#6a584c]">
 							Average Score
 						</h3>
 						<p className="text-xl sm:text-2xl font-bold text-white">
@@ -247,24 +247,24 @@ export default function AnimeList({ animeList }: AnimeListProps) {
 
 			<div id="sticky-wrapper" className="relative mb-8">
 				<div className="sticky top-4 left-0 right-0 z-50">
-					<div className="flex flex-col sm:flex-row gap-4 p-4 sm:p-6 bg-zinc-900/50 rounded-lg border border-[#ffb6c1]/20">
+					<div className="flex flex-col sm:flex-row gap-4 p-4 sm:p-6 bg-zinc-900/50 rounded-lg border border-[#6a584c]/20">
 						<div className="flex-1 space-y-2">
-							<h3 className="text-xs font-medium text-[#ffb6c1]">
+							<h3 className="text-xs font-medium text-[#6a584c]">
 								Filter by Status
 							</h3>
 							<Select
 								value={activeFilter}
 								onValueChange={(value: FilterStatus) => setActiveFilter(value)}
 							>
-								<SelectTrigger className="w-[180px] bg-zinc-900 border-[#ffb6c1]/20 text-[#ffb6c1]">
+								<SelectTrigger className="w-[180px] bg-zinc-900 border-[#6a584c]/20 text-[#6a584c]">
 									<SelectValue placeholder="Select status" />
 								</SelectTrigger>
-								<SelectContent className="bg-zinc-900 border-[#ffb6c1]/20">
+								<SelectContent className="bg-zinc-900 border-[#6a584c]/20">
 									{Object.entries(FILTER_OPTIONS).map(([value, label]) => (
 										<SelectItem
 											key={value}
 											value={value}
-											className="cursor-pointer text-[#ffb6c1] hover:bg-[#ffb6c1]/20 focus:bg-[#ffb6c1]/20 focus:text-[#ffb6c1]"
+											className="cursor-pointer text-[#6a584c] hover:bg-[#6a584c]/20 focus:bg-[#6a584c]/20 focus:text-[#6a584c]"
 										>
 											{label}
 										</SelectItem>
@@ -273,20 +273,20 @@ export default function AnimeList({ animeList }: AnimeListProps) {
 							</Select>
 						</div>
 						<div className="space-y-2">
-							<h3 className="text-xs font-medium text-[#ffb6c1]">Sort by</h3>
+							<h3 className="text-xs font-medium text-[#6a584c]">Sort by</h3>
 							<Select
 								value={activeSort}
 								onValueChange={(value: SortOption) => setActiveSort(value)}
 							>
-								<SelectTrigger className="w-[180px] bg-zinc-900 border-[#ffb6c1]/20 text-[#ffb6c1]">
+								<SelectTrigger className="w-[180px] bg-zinc-900 border-[#6a584c]/20 text-[#6a584c]">
 									<SelectValue placeholder="Select sort" />
 								</SelectTrigger>
-								<SelectContent className="bg-zinc-900 border-[#ffb6c1]/20">
+								<SelectContent className="bg-zinc-900 border-[#6a584c]/20">
 									{Object.entries(SORT_OPTIONS).map(([value, label]) => (
 										<SelectItem
 											key={value}
 											value={value}
-											className="cursor-pointer text-[#ffb6c1] hover:bg-[#ffb6c1]/20 focus:bg-[#ffb6c1]/20 focus:text-[#ffb6c1]"
+											className="cursor-pointer text-[#6a584c] hover:bg-[#6a584c]/20 focus:bg-[#6a584c]/20 focus:text-[#6a584c]"
 										>
 											{label}
 										</SelectItem>
@@ -305,7 +305,7 @@ export default function AnimeList({ animeList }: AnimeListProps) {
 						href={`https://myanimelist.net/anime/${anime.node.id}`}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="group bg-zinc-900/50 rounded-lg overflow-hidden border border-[#ffb6c1]/20 hover:border-[#ffb6c1]/40 transition-all w-full"
+						className="group bg-zinc-900/50 rounded-lg overflow-hidden border border-[#6a584c]/20 hover:border-[#6a584c]/40 transition-all w-full"
 					>
 						<div className="relative pb-[140%] overflow-hidden">
 							<Image
@@ -372,7 +372,7 @@ export default function AnimeList({ animeList }: AnimeListProps) {
 					className="w-full py-8 flex items-center justify-center"
 				>
 					{isLoading ? (
-						<div className="flex items-center gap-2 text-[#ffb6c1]">
+						<div className="flex items-center gap-2 text-[#6a584c]">
 							<svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
 								<title>Loading Spinner</title>
 								<circle

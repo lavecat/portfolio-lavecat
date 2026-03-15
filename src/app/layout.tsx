@@ -15,29 +15,27 @@ const aldrich = Aldrich({
 });
 
 export const metadata: Metadata = {
-	metadataBase: new URL("https://mjba.my"),
+	metadataBase: new URL("https://lirus.vercel.app"),
 	title: {
-		default: "えめじ",
+		default: "! Lirus",
 		template: "%s",
 	},
 	description:
-		"Hi! I'm MJ, a passionate developer who loves anime and gaming. Welcome to my portfolio! ♡(˶˃ ᵕ ˂˶)♡",
+		"Hi! I'm Lirus, a passionate developer who loves anime & Gaming and COOOKIEEEESS welcome to my portfolio! 🍪",
 	keywords: [
-		"MJ",
-		"iaMJ",
-		"MJBA",
+		"lirus_12345",
+		"lirus",
+		"Lirus",
 		"Portfolio",
 		"Developer",
 		"Anime",
 		"Gaming",
-		"Web Development",
+		"BackEnd Development",
 		"Weeb",
-		"Otaku",
-		"Kawaii",
 	],
-	authors: [{ name: "iaMJ" }],
-	creator: "iaMJ",
-	publisher: "iaMJ",
+	authors: [{ name: "iaMJ, Lirus" }],
+	creator: "iaMJ, Lirus",
+	publisher: "Lirus",
 	robots: {
 		index: true,
 		follow: true,
@@ -45,30 +43,30 @@ export const metadata: Metadata = {
 	openGraph: {
 		type: "website",
 		locale: "en_US",
-		url: "https://mjba.my",
-		siteName: "MJ's Portfolio",
-		title: "えめじ",
+		url: "https://lirus.vercel.app",
+		siteName: "Lirus Portfolio",
+		title: "! Lirus",
 		description:
-			"Hi! I'm MJ, a passionate developer who loves anime and gaming. Welcome to my portfolio! ♡(˶˃ ᵕ ˂˶)♡",
+			"Hi! I'm Lirus, a passionate developer who loves anime and COOOKIEEEESS welcome to my portfolio! 🍪",
 		images: [
 			{
-				url: "/icon.svg",
+				url: "/icon.png",
 				width: 200,
 				height: 200,
-				alt: "MJ's Portfolio",
+				alt: "Lirus Portfolio",
 			},
 		],
 	},
 	twitter: {
 		card: "summary_large_image",
-		title: "えめじ",
+		title: "! Lirus",
 		description:
-			"Hi! I'm MJ, a passionate developer who loves anime and gaming. Welcome to my portfolio! ♡(˶˃ ᵕ ˂˶)♡",
+			"Hi! I'm Lirus, a passionate developer who loves anime and COOOKIEEEESS welcome to my portfolio! 🍪",
 		creator: "@MJ",
-		images: ["/icon.svg"],
+		images: ["/icon.png"],
 	},
 	alternates: {
-		canonical: "https://mjba.my",
+		canonical: "https://lirus.vercel.app",
 	},
 };
 

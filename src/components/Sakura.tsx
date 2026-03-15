@@ -9,6 +9,7 @@ interface Petal {
 	speedY: number;
 	angle: number;
 	rotationSpeed: number;
+	chips: { x: number; y: number }[];
 }
 
 const Sakura = () => {
@@ -34,32 +35,48 @@ const Sakura = () => {
 		const createPetals = (count: number) => {
 			const petals = petalsRef.current;
 			petals.length = 0;
+
 			for (let i = 0; i < count; i++) {
+				const radius = 5 + Math.random() * 5;
+
 				petals.push({
 					x: Math.random() * canvas.width,
 					y: Math.random() * canvas.height,
-					radius: 5 + Math.random() * 5,
-					speedX: (-0.2 + Math.random() * 0.4) * 0.7,
-					speedY: (0.5 + Math.random() * 1.2) * 0.7,
+					radius,
+					speedX: (-0.2 + Math.random() * 0.4) * 0.5,
+					speedY: (0.3 + Math.random() * 0.8) * 0.6,
 					angle: Math.random() * 360,
-					rotationSpeed: (-0.1 + Math.random() * 0.2) * 0.7,
+					rotationSpeed: (-0.003 + Math.random() * 0.006),
+					chips: Array.from({ length: 4 }, () => ({
+						x: (Math.random() - 0.5) * radius,
+						y: (Math.random() - 0.5) * radius,
+					})),
 				});
 			}
 		};
 
-		createPetals(40); // You can increase this number
+		createPetals(40);
 
 		const draw = () => {
 			ctx.clearRect(0, 0, canvas.width, canvas.height);
-			ctx.fillStyle = "#ffb6c1"; // Set the exact color #ffb6c1
 
 			for (const petal of petalsRef.current) {
 				ctx.save();
 				ctx.translate(petal.x, petal.y);
 				ctx.rotate((petal.angle * Math.PI) / 180);
+
 				ctx.beginPath();
-				ctx.ellipse(0, 0, petal.radius, petal.radius * 0.6, 0, 0, 2 * Math.PI);
+				ctx.arc(0, 0, petal.radius, 0, Math.PI * 2);
+				ctx.fillStyle = "#d2a679";
 				ctx.fill();
+
+				ctx.fillStyle = "#5c4033";
+				for (const chip of petal.chips) {
+					ctx.beginPath();
+					ctx.arc(chip.x, chip.y, petal.radius * 0.15, 0, Math.PI * 2);
+					ctx.fill();
+				}
+
 				ctx.restore();
 
 				petal.x += petal.speedX;

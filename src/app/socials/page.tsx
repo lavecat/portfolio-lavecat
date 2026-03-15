@@ -3,11 +3,11 @@ import Link from "next/link";
 import {
 	FaDiscord,
 	FaGithub,
-	FaReddit,
-	FaSpotify,
-	FaSteam,
+	FaSteam
 } from "react-icons/fa";
-import { SiBluesky } from "react-icons/si";
+
+import { SiMatrix,SiRoblox } from "react-icons/si";
+
 
 export const metadata: Metadata = {
 	title: "Socials",
@@ -21,44 +21,37 @@ export const viewport: Viewport = {
 
 const socialLinks = [
 	{
-		name: "Bluesky",
-		icon: <SiBluesky size={24} />,
-		url: "https://bsky.app/profile/mja.moe",
-		color:
-			"bg-[#1DA1F2]/10 hover:bg-[#1DA1F2]/20 text-[#1DA1F2] border-[#1DA1F2]/30",
-	},
-	{
 		name: "GitHub",
 		icon: <FaGithub size={24} />,
-		url: "https://github.com/idMJA",
+		url: "https://github.com/lavecat",
 		color:
 			"bg-[#6e5494]/10 hover:bg-[#6e5494]/20 text-white border-[#6e5494]/30",
 	},
 	{
 		name: "Steam",
 		icon: <FaSteam size={24} />,
-		url: "https://steamcommunity.com/id/MJBD/",
+		url: "https://steamcommunity.com/profiles/76561199570825419/",
 		color:
 			"bg-[#1b2838]/10 hover:bg-[#1b2838]/20 text-white border-[#1b2838]/30",
 	},
 	{
-		name: "Spotify",
-		icon: <FaSpotify size={24} />,
-		url: "https://open.spotify.com/user/8116baq16nwq1sab8c5dy3rrx",
+		name: "Roblox",
+		icon: <SiRoblox size={24} />,
+		url: "https://www.roblox.com/users/2218745313",
 		color:
-			"bg-[#1DB954]/10 hover:bg-[#1DB954]/20 text-[#1DB954] border-[#1DB954]/30",
+			"bg-[#1b2838]/10 hover:bg-[#1b2838]/20 text-white border-[#1b2838]/30",
 	},
 	{
-		name: "Reddit",
-		icon: <FaReddit size={24} />,
-		url: "https://www.reddit.com/u/0MJA",
+		name: "Matrix",
+		icon: <SiMatrix size={24} />,
+		url: "https://steamcommunity.com/profiles/76561199570825419/",
 		color:
-			"bg-[#FF4500]/10 hover:bg-[#FF4500]/20 text-white border-[#FF4500]/30",
+			"bg-[#1b2838]/10 hover:bg-[#1b2838]/20 text-white border-[#1b2838]/30",
 	},
 	{
 		name: "Discord",
 		icon: <FaDiscord size={24} />,
-		url: "https://discord.com/users/885731228874051624",
+		url: "https://discord.com/users/1132574182270570557",
 		color:
 			"bg-[#5865F2]/10 hover:bg-[#5865F2]/20 text-[#5865F2] border-[#5865F2]/30",
 	},
@@ -68,7 +61,7 @@ export default function SocialsPage() {
 	return (
 		<div className="container mx-auto px-4 md:px-8 py-4 md:py-6 max-w-7xl">
 			<h1 className="text-3xl md:text-4xl font-bold mb-8 tracking-wide text-white">
-				My Socials <span className="text-[#ffb6c1]">♡</span>
+				My Socials <span className="text-[#6a584c]">x)</span>
 			</h1>
 
 			<p className="text-zinc-300 mb-8 max-w-2xl">

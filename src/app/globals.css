@@ -131,14 +131,14 @@
 
 /* Anime-style button */
 .btn-anime {
-	@apply bg-gradient-to-r from-[#ffb6c1] to-[#ffb6c1] hover:from-[#ffb6c1] hover:to-[#ffb6c1];
+	@apply bg-gradient-to-r from-[#6a584c] to-[#6a584c] hover:from-[#6a584c] hover:to-[#6a584c];
 	@apply px-6 py-2 rounded-full text-white font-medium shadow-md transition-all duration-300;
 	@apply hover:shadow-lg hover:scale-105 active:scale-95;
 }
 
 /* Card with anime-style border */
 .card-anime {
-	@apply rounded-xl overflow-hidden border-2 border-[#ffb6c1];
+	@apply rounded-xl overflow-hidden border-2 border-[#6a584c]; /* bordure marron/gris */
 	@apply bg-[#13111C];
 	@apply transition-all duration-300 hover:shadow-[0_0_20px_rgba(255,182,193,0.5)];
 }

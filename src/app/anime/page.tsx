@@ -52,7 +52,7 @@ export default function AnimePage() {
 				<button
 					type="button"
 					onClick={fetchAnimeList}
-					className="px-4 py-2 bg-[#ffb6c1]/20 hover:bg-[#ffb6c1]/30 text-[#ffb6c1] rounded-lg border border-[#ffb6c1]/30 transition-colors"
+					className="px-4 py-2 bg-[#6a584c]/20 hover:bg-[#6a584c]/30 text-[#6a584c] rounded-lg border border-[#6a584c]/30 transition-colors"
 				>
 					Try Again
 				</button>
@@ -65,7 +65,7 @@ export default function AnimePage() {
 			<div className="space-y-6">
 				<div className="flex justify-between items-center">
 					<div className="space-y-2">
-						<h1 className="text-4xl font-bold bg-gradient-to-r from-[#ffb6c1] to-[#ffb6c1] text-transparent bg-clip-text">
+						<h1 className="text-4xl font-bold bg-gradient-to-r from-[#6a584c] to-[#6a584c] text-transparent bg-clip-text">
 							My Anime List
 						</h1>
 						<p className="text-zinc-400">
@@ -73,10 +73,10 @@ export default function AnimePage() {
 						</p>
 					</div>
 					<Link
-						href="https://myanimelist.net/profile/1MJ"
+						href="https://myanimelist.net/profile/lirus0"
 						target="_blank"
 						rel="noopener noreferrer"
-						className="flex items-center gap-2 px-4 py-2 bg-[#ffb6c1]/20 hover:bg-[#ffb6c1]/30 text-[#ffb6c1] rounded-lg border border-[#ffb6c1]/30 transition-colors whitespace-nowrap"
+						className="flex items-center gap-2 px-4 py-2 bg-[#6a584c]/20 hover:bg-[#6a584c]/30 text-[#6a584c] rounded-lg border border-[#6a584c]/30 transition-colors whitespace-nowrap"
 					>
 						<span>View Profile</span>
 						<svg

@@ -84,19 +84,19 @@ function TrackCard({
 							{!hasDuration && (
 								<div className="absolute top-0 right-0 flex items-end gap-1 h-5">
 									<span
-										className={`w-1 rounded-sm bg-[#ffb6c1] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
+										className={`w-1 rounded-sm bg-[#6a584c] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
 										style={{ height: "40%", animationDelay: "0ms" }}
 									/>
 									<span
-										className={`w-1 rounded-sm bg-[#ffb6c1] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
+										className={`w-1 rounded-sm bg-[#6a584c] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
 										style={{ height: "100%", animationDelay: "120ms" }}
 									/>
 									<span
-										className={`w-1 rounded-sm bg-[#ffb6c1] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
+										className={`w-1 rounded-sm bg-[#6a584c] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
 										style={{ height: "65%", animationDelay: "240ms" }}
 									/>
 									<span
-										className={`w-1 rounded-sm bg-[#ffb6c1] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
+										className={`w-1 rounded-sm bg-[#6a584c] ${isPlaying ? "animate-pulse" : "opacity-60"}`}
 										style={{ height: "85%", animationDelay: "360ms" }}
 									/>
 								</div>
@@ -119,7 +119,7 @@ function TrackCard({
 						href={track.external_urls.spotify}
 						target="_blank"
 						rel="noopener noreferrer"
-						className="text-white hover:text-[#ffb6c1] transition-colors block truncate text-sm sm:text-base"
+						className="text-white hover:text-[#6a584c] transition-colors block truncate text-sm sm:text-base"
 					>
 						{track.name}
 					</a>
@@ -133,7 +133,7 @@ function TrackCard({
 						<div className="mt-2">
 							<div className="h-1 bg-zinc-800 rounded-full overflow-hidden">
 								<div
-									className="h-full bg-[#ffb6c1] transition-all duration-1000 ease-linear"
+									className="h-full bg-[#6a584c] transition-all duration-1000 ease-linear"
 									style={{
 										width: formatProgress(
 											currentProgress,
@@ -236,7 +236,7 @@ export default function MusicStatus() {
 		return (
 			<div className="space-y-6 sm:space-y-8 w-full">
 				<section>
-					<h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#ffb6c1]">
+					<h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#6a584c]">
 						Currently Playing
 					</h2>
 					<div className="space-y-3">
@@ -274,7 +274,7 @@ export default function MusicStatus() {
 				</section>
 
 				<section>
-					<h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#ffb6c1]">
+					<h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#6a584c]">
 						Recently Played
 					</h2>
 					<div className="space-y-3">
@@ -317,7 +317,7 @@ export default function MusicStatus() {
 	return (
 		<div className="space-y-6 sm:space-y-8 w-full">
 			<section>
-				<h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#ffb6c1]">
+				<h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#6a584c]">
 					Currently Playing
 				</h2>
 
@@ -338,7 +338,7 @@ export default function MusicStatus() {
 			</section>
 
 			<section>
-				<h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#ffb6c1]">
+				<h2 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4 text-[#6a584c]">
 					Recently Played
 				</h2>
 				<div className="space-y-3">

@@ -12,19 +12,9 @@ import {
 } from "@/components/ui/card";
 
 const repoLinks = [
-	"https://github.com/idMJA/Soundy",
-	"https://github.com/idMJA/Soundy-Dashboard",
-	"https://github.com/idMJA/portfolio",
-	"https://github.com/idMJA/portfolio-api",
-	"https://github.com/idMJA/accessify",
-	"https://github.com/idMJA/secretify",
-	"https://github.com/idMJA/LavaTools",
-	"https://github.com/idMJA/qwesty",
-	"https://github.com/idMJA/LinkUp",
-	"https://github.com/idMJA/AgroHygra",
-	"https://github.com/idMJA/lang-bench",
-	"https://github.com/idMJA/WApi",
-	"https://github.com/idMJA/youtube-trusted-session-generator",
+	"https://github.com/CookieDevs/CookieSong",
+	"https://github.com/HazemMeqdad/lavaplay.py",
+	"https://github.com/lavecat/Kxspy"
 ];
 
 type Project = {
@@ -85,7 +75,7 @@ export default function ProjectPage() {
 			const params = repoLinks
 				.map((url) => `repos=${encodeURIComponent(url)}`)
 				.join("&");
-			const res = await fetch(`/api/github/project?${params}`);
+			const res = await fetch(`api/github/project?${params}`);
 			if (!res.ok) {
 				setProjects([]);
 				setLoading(false);
@@ -213,7 +203,7 @@ export default function ProjectPage() {
 
 			<div className="mt-12 text-center">
 				<Link
-					href="https://github.com/idMJA"
+					href="https://github.com/lavecat"
 					target="_blank"
 					className="inline-flex items-center gap-2 px-6 py-3 bg-gray-800 hover:bg-gray-700 text-white rounded-lg transition-colors border border-gray-700"
 				>

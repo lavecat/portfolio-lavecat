@@ -5,7 +5,7 @@ export default function StatsPage() {
 		<div className="container mx-auto px-4 md:px-8 py-4 md:py-6 max-w-7xl">
 			<section className="mb-8 md:mb-12">
 				<h1 className="text-3xl md:text-4xl font-bold mb-4 tracking-wide">
-					<span className="text-[#ffb6c1]">Code</span>
+					<span className="text-[#6a584c]">Code</span>
 					<span className="text-white"> Stats</span>
 				</h1>
 
