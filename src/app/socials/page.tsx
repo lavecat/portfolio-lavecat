@@ -44,7 +44,7 @@ const socialLinks = [
 	{
 		name: "Matrix",
 		icon: <SiMatrix size={24} />,
-		url: "https://steamcommunity.com/profiles/76561199570825419/",
+		url: "https://matrix.to/#/@lirus:matrix.org",
 		color:
 			"bg-[#1b2838]/10 hover:bg-[#1b2838]/20 text-white border-[#1b2838]/30",
 	},
